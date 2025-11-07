@@ -68,7 +68,7 @@ const render = () => {
   $timer.textContent = formatKoreanTime(formatTime());
 
   // 100초 안 지났을 경우만 배터리 로직 수행
-  if (duration < 10) {
+  if (duration < 100) {
     duration++;
     $pct.textContent = `${100 - duration}%`;
   } else {
