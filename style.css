@@ -1,18 +1,22 @@
-/* global.css */
+/* =========================================================
+   0) 글로벌 토큰 & 리셋
+   =======================================================*/
+
+/* 폰트 토큰: 프로젝트 전역에서 사용할 한글 기본 폰트 스택 */
 :root {
   --font-kr: "Gowun Dodum", "Noto Sans KR", "Apple SD Gothic Neo", "Segoe UI",
     Arial, sans-serif;
 }
 
+/* 기본 리셋 + 전역 폰트 적용 */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-}
-
-html {
   font-family: var(--font-kr);
 }
+
+/* 뷰포트 중앙 정렬용 레이아웃 컨테이너 */
 body {
   min-height: 100vh;
   display: flex;
@@ -20,52 +24,184 @@ body {
   justify-content: center; /* 가로 중앙 */
 }
 
+/* =========================================================
+   1) 아우터 컨테이너
+   =======================================================*/
+
+/* 메인 박스(카드) 레이아웃 */
 .container {
+  position: relative; /* 하단 고정 요소(알람 입력/배터리) 기준 */
   display: flex;
   flex-direction: column;
-  background-color: beige;
-  height: 80vh;
-  width: 80vw;
-  border-radius: 30px;
   align-items: center;
-  justify-content: center;
+  height: 90vh;
+  width: 90vw;
+
+  background-color: beige;
+  border-radius: 30px;
+
+  /* 입체감 그림자 */
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
-.header {
-  width: 80%;
-  /* border: 1px solid black; */
+/* =========================================================
+   2) 헤더/타이틀 섹션
+   =======================================================*/
+
+/* 상단 타이틀(아이콘 + 텍스트) 수평 정렬 */
+#title-section {
   display: flex;
-  justify-content: space-between;
-}
-.alarm-input {
-  display: flex;
-  gap: 10px;
+  align-items: center;
+  gap: 14px;
 }
 
-.alarm-input {
+/* =========================================================
+   3) 알람 입력 영역(우하단 고정)
+   =======================================================*/
+
+/* 알람 입력 박스: 우하단 고정 */
+#alarm-input {
+  position: absolute;
+  right: 26px;
+  bottom: 26px;
+
   display: flex;
+  gap: 5px; /* input과 버튼 간격 */
 }
 
-.alarm-input button {
-  padding: 10px;
-  font-family: var(--font-kr);
-  border-radius: 10px;
+/* 알람 추가 버튼 기본 스타일 */
+#alarm-input button {
+  padding: 20px;
   border: none;
+  border-radius: 10px;
+
+  background-color: black;
+  color: white;
+  font-family: var(--font-kr);
 }
 
-.alarm-input button:hover {
+/* 알람 추가 버튼 호버 효과 */
+#alarm-input button:hover {
   cursor: pointer;
-  background-color: lightgray;
+  background-color: #111;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
 }
 
+/* =========================================================
+   4) 시계/타이머 표시
+   =======================================================*/
+
+/* 시간 텍스트 스타일 */
 #timer {
-  border: 1px solid lightgray;
-  color: brown;
-  font-size: xx-large;
+  color: white;
+  font-size: x-large;
   font-weight: bold;
-  padding: 20px 100px;
-  background-color: aliceblue;
+}
+
+/* 타이머 박스(배경/정렬/그림자) */
+#timer-section {
+  /* 배경 이미지를 사용할 경우 아래 주석 해제
+  background-image: url("./clock-bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  width: 300px;
+  height: 100px;
+
+  background-color: lightpink;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+/* =========================================================
+   5) 배터리 표시(좌하단 고정)
+   =======================================================*/
+
+/* 배터리 정보(아이콘/퍼센트) */
+#battery-section {
+  position: absolute;
+  left: 26px;
+  bottom: 26px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #22c55e; /* JS에서 단계별로 바뀜 */
+  font-size: xx-large;
+}
+
+/* =========================================================
+   6) 알람 목록 보드
+   =======================================================*/
+
+/* 알람 카드들을 가로 정렬하는 보드 */
+#alarm-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  width: 1000px;
+  height: 400px;
+
+  border: 1px solid black;
+}
+
+/* 개별 알람 카드 */
+.alarm-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+
+  width: 250px;
+  height: 200px;
+
+  background-color: lightpink;
+  color: white;
+  font-size: xx-large;
+
+  border: none;
+  border-radius: 20px;
+
+  /* 카드 그림자 */
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+
+  /* 카드 배경 이미지를 사용할 경우 아래 주석 해제
+  background-image: url("./alarm-bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  */
+}
+
+/* 알람 개수 카운터(작은 회색 텍스트) */
+#alarm-cnt {
+  font-size: large;
+  color: lightgray;
+}
+
+/* =========================================================
+   7) 알람 카드 내 버튼
+   =======================================================*/
+
+/* 삭제 버튼 기본 스타일(여백만 지정, 상세 스타일은 JS/디자인에 맞춰 확장 가능) */
+.alarm-item button {
+  padding: 10px;
+}
+
+/* 삭제 버튼 호버 */
+.alarm-item button:hover {
+  cursor: pointer;
 }

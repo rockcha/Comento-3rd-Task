@@ -11,22 +11,38 @@
       href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap"
       rel="stylesheet"
     />
-
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      integrity="sha512-8x2n8rYh2n7J2Pq4jQmJ5u1nA9Pp5J9p7j0p8Hk1z/...."
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container">
-      <div class="header">
-        <h1>⏰코멘토 시계</h1>
+      <div id="title-section">
+        <h1>[ 코멘토 시계 ]</h1>
+      </div>
+      <div id="timer-section">
+        <i class="fa-solid fa-clock fa-2xl" style="color: palevioletred"></i>
+        <div id="timer"></div>
+      </div>
 
-        <div class="alarm-input">
+      <div id="battery-section">
+        <i class="fa-solid fa-battery-full fa-2xl"></i>
+        <span id="pct">100%</span>
+      </div>
+
+      <div id="alarm-section">
+        <h2>알람 리스트 <span id="alarm-cnt">(0)</span></h2>
+
+        <div id="alarm-list">알람이 없습니다. 새로운 알람을 추가해주세요!</div>
+        <div id="alarm-input">
           <input type="time" /> <button>알람 추가</button>
         </div>
       </div>
-      <div id="main">
-        <div id="timer"></div>
-      </div>
-      <div class="footer">footer</div>
     </div>
 
     <script src="clock.js"></script>
